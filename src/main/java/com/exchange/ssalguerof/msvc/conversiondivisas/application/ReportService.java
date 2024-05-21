@@ -11,8 +11,12 @@ import java.util.stream.Collectors;
 
 @Service
 public class ReportService {
+    private final TransaccionService transaccionService;
+
     @Autowired
-    private TransaccionService transaccionService;
+    public ReportService(TransaccionService transaccionService) {
+        this.transaccionService = transaccionService;
+    }
 
     public List<TransaccionDeCambioDTO> getTransaccionesReport() {
         List<TransaccionDeCambio> transacciones = transaccionService.getAllTransacciones();

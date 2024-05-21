@@ -9,8 +9,12 @@ import java.util.List;
 
 @Service
 public class TransaccionService {
+    private final TransaccionRepository transaccionRepository;
+
     @Autowired
-    private TransaccionRepository transaccionRepository;
+    public TransaccionService(TransaccionRepository transaccionRepository) {
+        this.transaccionRepository = transaccionRepository;
+    }
 
     public List<TransaccionDeCambio> getAllTransacciones(){
         return transaccionRepository.findAll();

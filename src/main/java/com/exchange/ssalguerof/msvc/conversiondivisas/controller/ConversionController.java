@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/convertir")
 public class ConversionController {
 
+    private final ConversionService conversionService;
     @Autowired
-    private ConversionService conversionService;
+    public ConversionController(ConversionService conversionService) {
+        this.conversionService = conversionService;
+    }
 
     @PostMapping
     public ResponseEntity<TransaccionDeCambioDTO> convertir(@RequestBody ConversionRequestDTO requestDTO) {

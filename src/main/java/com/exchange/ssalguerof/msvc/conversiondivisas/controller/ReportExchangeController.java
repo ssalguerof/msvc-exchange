@@ -12,8 +12,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/reports")
 public class ReportExchangeController {
+    private final ReportService reportService;
+
     @Autowired
-    private ReportService reportService;
+    public ReportExchangeController(ReportService reportService) {
+        this.reportService = reportService;
+    }
 
     @GetMapping("/transacciones")
     public List<TransaccionDeCambioDTO> getTransaccionesReport() {
