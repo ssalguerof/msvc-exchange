@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/convertir")
+@RequestMapping("/api/convertir")
 public class ConversionController {
 
     @Autowired

@@ -17,7 +17,7 @@ public class MsvcExchangeApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MsvcExchangeApplication.class, args);
 
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		/*BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String rawPassword = "password";
 		String encodedPassword = encoder.encode(rawPassword);
 
@@ -26,7 +26,7 @@ public class MsvcExchangeApplication {
 
 		Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 		String encodedKey = Encoders.BASE64.encode(key.getEncoded());
-		System.out.println("Generated Key: " + encodedKey);
+		System.out.println("Generated Key: " + encodedKey);*/
 	}
 
 }

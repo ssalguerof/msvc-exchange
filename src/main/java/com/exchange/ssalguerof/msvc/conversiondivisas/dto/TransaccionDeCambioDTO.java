@@ -6,8 +6,10 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 public class TransaccionDeCambioDTO {
+    private Long id;
     private BigDecimal monto;
     private BigDecimal montoConvertido;
     private String monedaOrigen;
@@ -22,4 +24,5 @@ public class TransaccionDeCambioDTO {
         this.monedaDestino = monedaDestino;
         this.tipoDeCambio = tipoDeCambio;
     }
+
 }
