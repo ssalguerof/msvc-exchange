@@ -18,12 +18,16 @@ public class ConversionService {
     private ExchangeRateClient exchangeRateClient;
 
     public TransaccionDeCambioDTO convertir(ConversionRequestDTO requestDTO) {
-        BigDecimal tipoDeCambio = exchangeRateClient.getExchangeRate(requestDTO.getMonedaOrigen()).getConversion_rates().get(requestDTO.getMonedaDestino());
+        BigDecimal tipoDeCambio = exchangeRateClient.getExchangeRate(requestDTO.getMonedaOrigen())
+                                    .getConversion_rates().get(requestDTO.getMonedaDestino());
         BigDecimal montoConvertido = requestDTO.getMonto().multiply(tipoDeCambio);
 
-        TransaccionDeCambio transaccion = new TransaccionDeCambio(requestDTO.getMonto(), requestDTO.getMonedaOrigen(), requestDTO.getMonedaDestino(), montoConvertido, tipoDeCambio);
-        repository.save(transaccion);
+        TransaccionDeCambio transaccion = new TransaccionDeCambio(requestDTO.getMonto(), requestDTO.getMonedaOrigen(),
+                                                requestDTO.getMonedaDestino(), montoConvertido, tipoDeCambio);
+        TransaccionDeCambio  transaccionBD =  repository.save(transaccion);
 
-        return new TransaccionDeCambioDTO(transaccion.getMonto(), transaccion.getMontoConvertido(), transaccion.getMonedaOrigen(), transaccion.getMonedaDestino(), transaccion.getTipoDeCambio());
+        return new TransaccionDeCambioDTO(transaccionBD.getId(), transaccion.getMonto(), transaccion.getMontoConvertido(),
+                            transaccion.getMonedaOrigen(), transaccion.getMonedaDestino(), transaccion.getTipoDeCambio());
+
     }
 }
